@@ -1,20 +1,37 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { Text, View, StyleSheet } from 'react-native';
 
-export default function App() {
+const TextoAninhado = () => {
+  const [titulo, setTitulo] = useState('Texto do elemento filho');
+
+  const modificaTexto = () => {
+    setTitulo('Este texto está sendo exibido pois o primeiro elemento do texto foi pressionado/tocado');
+  };
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <Text style={styles.baseText}>
+      <Text style={styles.titulo} onPress={modificaTexto}>
+        {titulo}
+        {'/n'}
+      </Text>
+
+    </Text>
   );
-}
+};
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+  baseText: {
+	fontFamily: "Verdana",
+	marginTop:50,
+	marginLeft:10,
+  backgroundColor: '#FFF'
   },
+  titulo: {
+	marginTop:10,
+	fontSize: 18,
+	fontWeight: "bold",
+  backgroundColor: '#FFF'
+  }
 });
+
+export default TextoAninhado;
