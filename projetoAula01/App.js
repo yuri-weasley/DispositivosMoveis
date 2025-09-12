@@ -1,37 +1,42 @@
-import React, { useState } from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import React from 'react';
+import { StyleSheet, Text, SafeAreaView, ScrollView, StatusBar } from 'react-native';
 
-const TextoAninhado = () => {
-  const [titulo, setTitulo] = useState('Texto do elemento filho');
-
-  const modificaTexto = () => {
-    setTitulo('Este texto está sendo exibido pois o primeiro elemento do texto foi pressionado/tocado');
-  };
-
+const Lista = () => {
   return (
-    <Text style={styles.baseText}>
-      <Text style={styles.titulo} onPress={modificaTexto}>
-        {titulo}
-        {'/n'}
-      </Text>
-
-    </Text>
+	<SafeAreaView style={styles.safecontainer}>
+	  <ScrollView style={styles.containerScrollView}>
+		<Text style={styles.text}>
+		  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+					Pellentesque id dui sed nulla imperdiet scelerisque.
+					Integer malesuada facilisis nibh varius eleifend.
+					Cras a velit laoreet dui interdum consectetur.
+					Pellentesque volutpat placerat mauris in interdum.
+					Pellentesque non egestas sem. Suspendisse malesuada at augue
+					sit amet pretium.
+					Praesent odio nisl, semper vitae purus a, elementum ultrices arcu.
+					Praesent blandit lectus et aliquet posuere.
+					Nulla dictum, nisi id feugiat suscipit, mi sem maximus turpis,
+					vel aliquet massa ex sit amet sem.
+					Sed ullamcorper enim non elit vestibulum, feugiat euismod elit
+					consectetur. In et pulvinar eros.
+		</Text>
+	  </ScrollView>
+	</SafeAreaView>
   );
-};
+}
 
 const styles = StyleSheet.create({
-  baseText: {
-	fontFamily: "Verdana",
-	marginTop:50,
-	marginLeft:10,
-  backgroundColor: '#FFF'
+  safecontainer: {
+	flex: 1,
+	paddingTop: StatusBar.currentHeight,
   },
-  titulo: {
-	marginTop:10,
-	fontSize: 18,
-	fontWeight: "bold",
-  backgroundColor: '#FFF'
-  }
+  containerScrollView: {
+	backgroundColor: 'grey',
+	marginHorizontal: 20,
+  },
+  text: {
+	fontSize: 26,
+  },
 });
 
-export default TextoAninhado;
+export default Lista;
