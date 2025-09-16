@@ -1,42 +1,60 @@
 import React from 'react';
-import { StyleSheet, Text, SafeAreaView, ScrollView, StatusBar } from 'react-native';
+ import { View, FlatList, StyleSheet, Text, StatusBar } from 'react-native';
 
-const Lista = () => {
-  return (
-	<SafeAreaView style={styles.safecontainer}>
-	  <ScrollView style={styles.containerScrollView}>
-		<Text style={styles.text}>
-		  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-					Pellentesque id dui sed nulla imperdiet scelerisque.
-					Integer malesuada facilisis nibh varius eleifend.
-					Cras a velit laoreet dui interdum consectetur.
-					Pellentesque volutpat placerat mauris in interdum.
-					Pellentesque non egestas sem. Suspendisse malesuada at augue
-					sit amet pretium.
-					Praesent odio nisl, semper vitae purus a, elementum ultrices arcu.
-					Praesent blandit lectus et aliquet posuere.
-					Nulla dictum, nisi id feugiat suscipit, mi sem maximus turpis,
-					vel aliquet massa ex sit amet sem.
-					Sed ullamcorper enim non elit vestibulum, feugiat euismod elit
-					consectetur. In et pulvinar eros.
-		</Text>
-	  </ScrollView>
-	</SafeAreaView>
-  );
-}
+ const DADOS = [
+     {
+     id: '1',
+     descricao: 'TV Led 49',
+     categoria_id: 1
+     },
+     {
+     id: '4',
+     descricao: 'Camisa Trilha',
+     categoria_id: 2
+     },
+     {
+     id: '4',
+     descricao: 'Qualquer semelhança é mera coincidência',
+     categoria_id: 3
+     },
+ ];
 
-const styles = StyleSheet.create({
-  safecontainer: {
-	flex: 1,
-	paddingTop: StatusBar.currentHeight,
-  },
-  containerScrollView: {
-	backgroundColor: 'grey',
-	marginHorizontal: 20,
-  },
-  text: {
-	fontSize: 26,
-  },
-});
+ const Item = ({ descricao }) => (
+     <View style={styles.item}>
+     <Text style={styles.title}>{descricao}</Text>
+     </View>
+ );
 
-export default Lista;
+ const App = () => {
+     const renderItem = ({ item }) => (
+     <Item descricao={item.descricao} />
+     );
+
+     return (
+     <View style={styles.container}>
+         <FlatList
+         data={DADOS}
+         renderItem={renderItem}
+         keyExtractor={item => item.id}
+         />
+     </View>
+     );
+ }
+
+ const styles = StyleSheet.create({
+     container: {
+     flex: 1,
+     marginTop: StatusBar.currentHeight || 0,
+     },
+     item: {
+     backgroundColor: 'yellow',
+     padding: 20,
+     marginVertical: 8,
+     marginHorizontal: 16,
+     },
+     title: {
+     fontSize: 12,
+     },
+ });
+
+ export default App; 
