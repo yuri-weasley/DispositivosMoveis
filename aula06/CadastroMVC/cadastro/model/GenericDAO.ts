@@ -4,7 +4,7 @@ Como os processos básicos de consulta e manipulação de dados são muito repet
 
 import db from './DatabaseInstance';
  
-export abstract class GenericDAO<T,K>{
+export abstract class GenericDAO<T, K>{
   protected abstract getCreateSQL(): string;
   protected abstract getTableName(): string;
   protected abstract getInsertSQL(): string;
