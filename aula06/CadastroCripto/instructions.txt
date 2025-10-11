@@ -1,0 +1,14 @@
+// Fiquei com preguiça de criar um novo projeto React e com pena da minha memória. Meu Deus! Onde vou armazenar na minha máquina tantas dependências de projetos?!
+
+// A pasta Cadastro foi copiada de CadastroMVC, com todos os seus subdiretórios;
+
+// Para o exemplo, é necessário criar o projeto e instalar as suas dependências;
+
+react-native init CadastroCripto
+ cd CadastroCripto
+ npm install react-native-sqlite-storage @types/react-native-sqlite-storage @types/react --save
+ npm install react-native-base64 --save
+ npm install react-native-crypto-js --save
+ npm install react-native-encrypted-storage --save
+ npm install @react-navigation/native @react-navigation/stack
+ npm install react-native-reanimated react-native-gesture-handler react-native-screens react-native-safe-area-context @react-native-community/masked-view

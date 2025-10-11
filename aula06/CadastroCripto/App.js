@@ -1,3 +1,5 @@
+// Esse o arquivo principal do projeto, que está como app/(tabs)/index.tsx nos outros projetos
+
 import { Tabs } from 'expo-router';
 import React from 'react';
 
