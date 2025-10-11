@@ -3,6 +3,13 @@ import CryptoJS from "react-native-crypto-js";
 import StoredKey from "./StoredKey";
 import Utils from "./Utils";
 
+/* Para o processo de criptografar: Recupera a chave, criptografa, transforma em base64 e guarda;
+
+Para decriptografar: Recupera a chave, tira da base64, decriptografa e retorna.
+
+E assim, basta usar essa classe num DAO.
+*/
+
 export default class Cipher {
   public criptografar(strKey: StoredKey, texto: string): string {
     const iv = Utils.getWordArrayS(base64.decode(strKey.iv));

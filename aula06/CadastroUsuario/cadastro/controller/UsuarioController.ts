@@ -9,7 +9,7 @@ Temos dois novos métodos em nosso controlador, um para alteração da senha, e 
 import { Usuario } from "../model/Usuario";
 import UsuarioDAO from "../model/UsuarioDAO";
 import GenericController from "./GenericController";
-import * as Crypto from "expo-crypto"; 
+import * as Crypto from "expo-crypto"; // Biblioteca usada
 import { CryptoEncoding } from "expo-crypto";
 
 export default class UsuarioController extends GenericController<
@@ -22,7 +22,7 @@ export default class UsuarioController extends GenericController<
       senha,
       { encoding: CryptoEncoding.BASE64 }
     );
-    return senhaCripto;
+    return senhaCripto; // Aqui retornamos o hash da senha e guarda no BD, em base64
   }
 
   protected setDAO(): void {
@@ -32,7 +32,7 @@ export default class UsuarioController extends GenericController<
   }
 
   public async incluir(entidade: Usuario): Promise<boolean> {
-    entidade.senha = await this.getCripto(entidade.senha);
+    entidade.senha = await this.getCripto(entidade.senha); // Criptografa a senha antes de incluir o usuário.
     return super.incluir(entidade);
   }
 
@@ -63,6 +63,11 @@ export default class UsuarioController extends GenericController<
             : entidade.senha == senhaCripto
             ? entidade
             : null
+            /* Aqui, comparamos as senhas criptografadas!
+            Ou seja, criptografamos e guardamos (as senhas) criptpgrafadas. Depois, temos que criptografar de novo e comparar. 
+            Porque não podemos recuperar a senha, por motivos de ser um fator de segurança. 
+            Que nenhum servidor possa retornar a sua senha. Se um servidor puder retornar sua senha, um hacker também consegue. 
+            Então, o ideal é que apenas o próprio usuário seja capaz de reconhecer essa senha e, se ele perder, vai ter que ser gerada uma senha aleatória para que ele substitua, posteriormente.*/
         )
       )
     );

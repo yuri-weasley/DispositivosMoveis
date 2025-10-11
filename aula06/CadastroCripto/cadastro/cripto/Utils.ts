@@ -1,5 +1,9 @@
-// É necessário instalar o crypto-js, através do: npm install crypto-js
+/* É necessário instalar o crypto-js, através do: npm install crypto-js
 
+--> Palavra-chave: Conversões.
+
+- ArrayBuffer (buffers de memória)
+*/
 import * as CryptoJS from "crypto-js";
 
 export default class Utils {
